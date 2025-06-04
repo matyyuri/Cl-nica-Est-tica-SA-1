@@ -1,0 +1,120 @@
+/* Reset de margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background: #32402f; /* Cor de fundo principal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container principal */
+.container {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  height: 80%;
+  background: #3f503b; /* Tom levemente mais claro para o contêiner */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Lado esquerdo - Imagem */
+.imagem {
+  flex: 1.2;
+  background: url('../imgs/foto_cadastro.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+/* Sobreposição escura */
+.imagem::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Texto sobre a imagem */
+.frase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.frase p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 500px;
+}
+
+/* Lado direito - Formulário */
+.formulario {
+  flex: 1;
+  background: #37422f; /* Tom intermediário para o fundo do formulário */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+/* Campos de entrada e seleção */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #3f3f23; /* Verde mais vibrante para os campos */
+  color: white;
+  font-size: 16px;
+}
+
+/* Estilização específica para o select */
+select {
+  appearance: none;
+  background: #3f3f23; 
+  background-position: right 10px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+/* Botões */
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.botao_agendamento, .botao_limpeza {
+  padding: 12px 24px;
+  border: 1px solid white;
+  background: #3f3f23;; /* Mantendo a consistência com os campos de entrada */
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 48%;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.botao_agendamento:hover,.botao_cadastro:hover, .botao_limpeza:hover {
+  background: #6b8e23; /* Tom mais claro ao passar o mouse */
+  transform: scale(1.05);
+}
