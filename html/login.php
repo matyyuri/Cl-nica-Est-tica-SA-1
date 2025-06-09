@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }else{
             //REDIRECIONA PARA A PÁGINA PRINCIPAL
             header('Location: principal.php');
+            echo"<script>alert('Teste de entrada');window.location.href='login.php';</script>";
             exit();
         }
     }else{
@@ -44,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="script.js"></script>
+  <!--  <script src="script.js"></script> -->
     <link rel="icon" href="../imgs/logo.jpg" type="image/x-icon">
 </head>
 <body class="cadastro-fundo">
@@ -89,12 +90,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <form action="login.php" method="POST">
         <fieldset>
           <legend>Login | Entrar na conta</legend>
+
     
           <label for="nome">E-mail:</label>
           <input type="email" id="email" name="email" required>
-    
-          <label for="obs">Senha:</label>
-          <input type="password" id="senha" name="senha" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
     
           <div class="botoes">
             <button class="botao_cadastro" type="submit">Entrar</button>

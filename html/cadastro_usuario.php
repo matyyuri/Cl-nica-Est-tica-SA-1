@@ -4,8 +4,9 @@ require_once 'conexao.php';
 
 //VERIFICA SE USUARIO TEM PERMISSÃO
 //supondo que o perfil 1 seja o administrador
-if($_SESSION['perfil'] !=1){
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] != 1) {
     echo "acesso negado!";
+    exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"]== "POST"){
