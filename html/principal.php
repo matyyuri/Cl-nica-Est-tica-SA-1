@@ -11,12 +11,12 @@
         //OBTENDO O NOME DO PERFIL DO USUARIO LOGADO
 
         $id_perfil = $_SESSION['perfil'];
-        $sqlPerfil = "SELECT perfil FROM perfil WHERE id_perfil = :id_perfil";
+        $sqlPerfil = "SELECT nome_perfil FROM perfil WHERE id_perfil = :id_perfil";
         $stmtPerfil = $pdo->prepare($sqlPerfil);
         $stmtPerfil->bindParam(':id_perfil', $id_perfil);
         $stmtPerfil->execute();
         $perfil = $stmtPerfil->fetch(PDO::FETCH_ASSOC);
-        $nome_perfil = $perfil['perfil'];
+        $nome_perfil = $perfil['nome_perfil'];
 
         //DEFINIÇÃO DAS PERMISSÕES POR PERFIL
 
@@ -45,7 +45,7 @@
             "alterar_produto.php",
             "alterar_funcionario.php" ],
 
-            "Exluir" =>[
+            "Excluir" =>[
             "excluir_usuario.php",
             "excluir_perfil.php", 
             "excluir_cliente.php",
@@ -66,22 +66,6 @@
             "alterar_fornecedor.php"]],
 
             3 => ["Cadastrar" =>[
-            "cadastro_fornecedor.php",
-            "cadastro_produto.php" ],
-
-            "Buscar" =>[ 
-            "buscar_cliente.php",
-            "buscar_fornecedor.php",
-            "buscar_produto.php" ],
-
-            "Alterar" =>[
-            "alterar_fornecedor.php",
-            "alterar_produto.php" ],
-
-            "Exluir" =>[
-            "excluir_produto.php" ]],
-
-            4 => ["Cadastrar" =>[
             "cadastro_cliente.php" ],
 
             "Buscar" =>[

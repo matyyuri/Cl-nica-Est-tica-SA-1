@@ -9,30 +9,30 @@ if ($_SESSION['perfil'] != 1) {
 }
 
 // Inicializa variáveis
-$usuario = null;
+$cliente = null;
 
 // Se o formulário for enviado, busca o usuário pelo ID ou nome
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['busca_usuario'])) {
-        $busca = trim($_POST['busca_usuario']);
+    if (!empty($_POST['busca_cliente'])) {
+        $busca = trim($_POST['busca_cliente']);
 
         // Verifica se a busca é um número (ID) ou um nome
         if (is_numeric($busca)) {
-            $sql = "SELECT * FROM usuario WHERE id_usuario = :busca";
+            $sql = "SELECT * FROM cliente WHERE id_cliente = :busca";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':busca', $busca, PDO::PARAM_INT);
         } else {
-            $sql = "SELECT * FROM usuario WHERE nome LIKE :busca_nome";
+            $sql = "SELECT * FROM cliente WHERE nome LIKE :busca_nome";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':busca_nome', "%$busca%", PDO::PARAM_STR);
         }
 
         $stmt->execute();
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Se o usuário não for encontrado, exibe um alerta
-        if (!$usuario) {
-            echo "<script>alert('Usuário não encontrado!');</script>";
+        // Se o cliente não for encontrado, exibe um alerta
+        if (!$cliente) {
+            echo "<script>alert('Cliente não encontrado!');</script>";
         }
     }
 }
@@ -93,10 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <fieldset>
 
     <!-- Formulário para buscar usuário pelo ID ou Nome -->
-    <form action="alterar_usuario.php" method="POST">
+    <form action="alterar_cliente.php" method="POST">
         <legend>Alterar usuário</legend>
-        <label for="busca_usuario">Digite o ID ou Nome do usuário:</label>
-        <input type="text" id="busca_usuario" name="busca_usuario" required onkeyup="buscarSugestoes()">
+        <label for="busca_cliente">Digite o ID ou Nome do usuário:</label>
+        <input type="text" id="busca_cliente" name="busca_cliente" required onkeyup="buscarSugestoes()">
         
         <!-- Div para exibir sugestões de usuários -->
         <div id="sugestoes"></div>
@@ -104,22 +104,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button class="botao_cadastro" type="submit">Buscar</button>
     </form>
 
-    <?php if ($usuario): ?>
+    <?php if ($cliente): ?>
         <!-- Formulário para alterar usuário -->
         <form action="processa_alteracao_usuario.php" method="POST">
-            <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($usuario['id_usuario']) ?>">
+            <input type="hidden" name="id_cliente" value="<?= htmlspecialchars($cliente['id_cliente']) ?>">
 
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" required>
+            <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($cliente['nome']) ?>" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" value="<?= htmlspecialchars($cliente['telefone']) ?>" required>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" value="<?= htmlspecialchars($cliente['endereco']) ?>" required>
 
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
+            <input type="email" id="email" name="email" value="<?= htmlspecialchars($cliente['email']) ?>" required>
+
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($cliente['data_nascimento']) ?>" required>
+
+            <label for="genero">Genero:</label>
+            <input type="text" id="genero" name="genero" value="<?= htmlspecialchars($cliente['genero']) ?>" required>
 
             <label for="id_perfil">Perfil:</label>
             <select id="id_perfil" name="id_perfil">
-                <option value="1" <?= $usuario['id_perfil'] == 1 ? 'selected' : '' ?>>Administrador</option>
-                <option value="2" <?= $usuario['id_perfil'] == 2 ? 'selected' : '' ?>>Recepcionista</option>
-                <option value="3" <?= $usuario['id_perfil'] == 3 ? 'selected' : '' ?>>Cliente</option>
+                <option value="1" <?= $cliente['id_perfil'] == 1 ? 'selected' : '' ?>>Administrador</option>
+                <option value="2" <?= $cliente['id_perfil'] == 2 ? 'selected' : '' ?>>Recepcionista</option>
+                <option value="3" <?= $cliente['id_perfil'] == 3 ? 'selected' : '' ?>>Cliente</option>
             </select>
 
             <!-- Se o usuário logado for ADM, exibir opção de alterar senha -->

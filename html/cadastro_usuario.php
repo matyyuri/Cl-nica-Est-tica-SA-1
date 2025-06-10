@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST"){
         <label for="id_perfil">Perfil: </label>
         <select id="id_perfil" name="id_perfil">
             <option value="1">Administrador</option>
-            <option value="2">Secretária</option>
+            <option value="2">Recepcionista</option>
             <option value="3">Cliente</option>
         </select>
 

@@ -30,3 +30,15 @@ Para: usuario@exemplo.com
 Olá! Sua nova senha temporária é: 3coVszS2
 
 ----------------------
+Para: usuario2@exemplo.com
+Olá! Sua nova senha temporária é: LDw7cZYg
+
+----------------------
+Para: usuario2@exemplo.com
+Olá! Sua nova senha temporária é: 9Sfux6Qd
+
+----------------------
+Para: julia@julia
+Olá! Sua nova senha temporária é: q4ZsUDHm
+
+----------------------
