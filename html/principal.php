@@ -125,11 +125,11 @@
                 <li><a href="../html/produtos.html">PRODUTOS</a></li>
                   
                 |<li><a href="../html/agendamento.html">AGENDAR</a></li>|
-                <li><a href="../html/login.html">LOGIN</a></li>|
+                <li><a href="../html/logout.html">LOGOUT</a></li>|
                 <li><a href="../html/cadastro.html">CADASTRO</a></li>|
             </ul>
         </nav>
-        <br><br><br><br><br>
+
 
         <div class="saudacao">
             <h2>Bem Vindo, <?php echo $_SESSION["usuario"];?>! 
@@ -158,6 +158,7 @@
             <?php endforeach; ?>
         </ul>
     </nav>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <footer class="l-footer">&copy; 2025 Iris Essence - Beauty Clinic. Todos os direitos reservados.</footer>
 </body>
 </html>
